@@ -295,6 +295,10 @@ on boot
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_ver_check
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_led_status
 
+    # Thermal Tuning
+    write /sys/class/thermal/thermal_zone0/oneshot_trip_temp "70 80 85 95"
+    write /sys/class/thermal/thermal_zone0/oneshot_trip_freq "1800 1700 1200 600"
+    
 on fs
     mount_all /vendor/etc/fstab.universal5420
     swapon_all /vendor/etc/fstab.universal5420
