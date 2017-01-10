@@ -299,6 +299,9 @@ on boot
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_ver_check
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_led_status
 
+    # Set max gpu clock at 533mhz
+    write /sys/devices/platform/mali.0/max_clock 533
+    
 on fs
     mount_all /vendor/etc/fstab.universal5420
     swapon_all /vendor/etc/fstab.universal5420
