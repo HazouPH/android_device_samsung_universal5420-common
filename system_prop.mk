@@ -16,6 +16,7 @@
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
+    aaudio.hw_burst_min_usec=2000 \
     aaudio.mmap_exclusive_policy=2 \
     aaudio.mmap_policy=2 \
     af.fast_track_multiplier=1 \
