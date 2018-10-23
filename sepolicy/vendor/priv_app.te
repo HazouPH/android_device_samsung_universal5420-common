@@ -5,4 +5,6 @@ allow priv_app{
     debugfs_mali_mem
 }:file r_file_perms;
 
+allow priv_app device:dir { open read };
+
 dontaudit priv_app sysfs_ausb:file r_file_perms;
