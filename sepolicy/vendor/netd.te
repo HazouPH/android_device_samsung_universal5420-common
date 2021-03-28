@@ -1,0 +1,5 @@
+# netd.te
+# Netd should not have SYS_MODULE privs, nor should it be requesting module loads
+# (things it requires should be built directly into the kernel)
+
+dontaudit netd kernel:system module_request;
