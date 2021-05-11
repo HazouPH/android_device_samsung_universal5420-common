@@ -8,6 +8,7 @@ allow hal_power_default {
     sysfs_muic
     sysfs_power_writable
     sysfs_sec_touchkey
+    sysfs_touchscreen_writable
 }:dir r_dir_perms;
 
 allow hal_power_default {
@@ -21,6 +22,8 @@ allow hal_power_default {
 allow hal_power_default {
     sysfs_devices_system_cpu
     sysfs_homebutton_writable
+    sysfs_sec_touchkey
+    sysfs_touchscreen_writable
 }:file rw_file_perms;
 
 allow hal_power_default sysfs_input:lnk_file read;

@@ -113,6 +113,8 @@ Return<void> Power::powerHint(PowerHint hint, int32_t data) {
 
     switch (hint) {
         case PowerHint::INTERACTION:
+            sendInputBoost();
+            break;  
         case PowerHint::LAUNCH:
             sendBoostpulse();
             break;
@@ -256,6 +258,11 @@ void Power::sendBoost(int duration_us) {
     usleep(duration_us);
 
     set(cpuInteractivePaths.front() + "/boost", "0");
+}
+
+void Power::sendInputBoost() {
+    set("/sys/class/sec/sec_touchkey/touchkey_booster_enabled", "1");
+    set("/sys/class/sec/tsp/tsp_booster_enabled", "1");    
 }
 
 }  // namespace implementation
