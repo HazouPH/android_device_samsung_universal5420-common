@@ -27,7 +27,7 @@
                 <!-- Capture(Input) Streams -->
                 <mixPort name="primary-in" role="sink">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="48000"
+                             samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
                              channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
                 </mixPort>
 
@@ -57,15 +57,15 @@
                 </devicePort>
                 <devicePort tagName="Bt Sco" role="sink" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO">
                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                            samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                            samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
                 <devicePort tagName="Bt Sco Headset" role="sink" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET">
                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                            samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                            samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
                 <devicePort tagName="Bt Sco Car Kit" role="sink" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT">
                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                            samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                            samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
 
                 <!-- input devices declaration, i.e. source DEVICE PORT -->
