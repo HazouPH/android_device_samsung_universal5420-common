@@ -67,6 +67,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     disable_configstore
 
+# Deathly Adiutor App
+PRODUCT_PACKAGES += \
+    DeathlyAdiutor
+    
+
 # IR
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-impl \
