@@ -67,6 +67,10 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl.exynos5420 \
     camera.universal5420
 
+# Deathly Adiutor App
+PRODUCT_PACKAGES += \
+    DeathlyAdiutor
+    
 # IR
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-service.samsung
