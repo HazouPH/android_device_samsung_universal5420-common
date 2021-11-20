@@ -68,6 +68,9 @@ on boot
     # CS socket
     mkdir /dev/socket/cs_socket 0770 system system
 
+    # Interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    
     # Change permission for interactive governor
 	chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
@@ -86,7 +89,7 @@ on boot
     chown system system /sys/devices/system/cpu/cpufreq/interactive/boost
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boost
     chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse
-	chmod 0200 /sys/devices/system/cpu/cpufreq/interactive/boostpulse
+	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse
     chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
     chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
@@ -115,7 +118,7 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/single_exit_load
     chown system system /sys/devices/system/cpu/cpufreq/interactive/single_exit_time
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/single_exit_time
-
+    
     # Permissions for gpio_keys
     chown system radio /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys 116,172
