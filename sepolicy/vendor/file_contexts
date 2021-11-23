@@ -291,5 +291,6 @@
 /sys/module/dhd/parameters/firmware_path    u:object_r:sysfs_wifi:s0
 
 # ZRAM
+/sys/devices/virtual/block/zram0/mem_used_total    u:object_r:sysfs_zram:s0
 /sys/devices/virtual/block/zram0/disksize    u:object_r:sysfs_zram:s0
 /sys/devices/virtual/block/zram0/max_comp_streams    u:object_r:sysfs_zram:s0
