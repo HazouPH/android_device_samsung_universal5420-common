@@ -6,8 +6,11 @@ allow priv_app{
 }:file r_file_perms;
 
 allow priv_app device:dir { open read };
-allow system_app sysfs_zram:dir search;
-allow system_app sysfs_zram:file r_file_perms;
+allow priv_app sysfs_zram:dir search;
+allow priv_app sysfs_zram:file r_file_perms;
+
+allow priv_app apexd_prop:file open;
+allow priv_app proc_interrupts:file open;
 
 dontaudit priv_app sysfs_ausb:file r_file_perms;
-dontaudit priv_app proc_interrupts:file r_file_perms;
+#dontaudit priv_app proc_interrupts:file r_file_perms;
