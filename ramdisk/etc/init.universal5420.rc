@@ -70,6 +70,8 @@ on boot
 
     # Interactive
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    chown system system /sys/devices/system/cpu/cpufreq/interactive
+	restorecon_recursive /sys/devices/system/cpu/cpufreq/interactive
     
     # Change permission for interactive governor
 	chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
