@@ -5,3 +5,5 @@ allow domain {
     debugfs_mali
     debugfs_mali_mem
 }:dir search;
+
+r_dir_file(domain, sysfs_devices_system_cpu)

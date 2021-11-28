@@ -34,5 +34,5 @@ allow vendor_init proc_vm:file w_file_perms;
 
 allow vendor_init sysfs:dir relabelfrom;
 allow vendor_init sysfs:file relabelfrom;
-allow vendor_init sysfs_interactive_writable:dir relabelto;
-allow vendor_init sysfs_interactive_writable:file relabelto;
+allow vendor_init sysfs_devices_system_cpu:dir relabelto;
+allow vendor_init sysfs_devices_system_cpu:file relabelto;

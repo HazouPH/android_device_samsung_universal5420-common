@@ -4,7 +4,6 @@ allow hal_power_default {
     sysfs_backlight_writable
     sysfs_batteryinfo
     sysfs_devices_system_cpu
-    sysfs_interactive_writable
     sysfs_homebutton_writable
     sysfs_muic
     sysfs_power_writable
@@ -22,7 +21,6 @@ allow hal_power_default {
 allow hal_power_default {
     sysfs_devices_system_cpu
     sysfs_homebutton_writable
-    sysfs_interactive_writable
 }:file rw_file_perms;
 
 allow hal_power_default sysfs_input:lnk_file read;

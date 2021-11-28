@@ -8,7 +8,7 @@ allow init efs_block_device:lnk_file relabelto;
 allow init ram_device:blk_file w_file_perms;
 
 allow init {
-    sysfs_interactive_writable
+    sysfs_devices_system_cpu
     sysfs_vibrator_writable
     sysfs_rndis
     sysfs_net

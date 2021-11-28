@@ -191,7 +191,6 @@
 /sys/devices/virtual/camera/rear/rear_camtype    u:object_r:sysfs_camera:s0
 
 # CPU/input boosters
-/sys/devices/system/cpu/cpufreq/interactive(/.*)?   u:object_r:sysfs_interactive_writable:s0
 /sys/devices/system/cpu(/.*)?    u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/platform/s3c2440-i2c\.[0-9]+/i2c-[0-9]+/[0-9]+-[0-9]+/input(/.*)?    u:object_r:sysfs_devices_system_cpu:s0 
 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq    u:object_r:sysfs_devices_system_cpu:s0 
