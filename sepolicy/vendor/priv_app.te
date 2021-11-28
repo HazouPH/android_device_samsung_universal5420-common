@@ -1,17 +1,26 @@
 # priv_app.te
+get_prop(priv_app, apexd_prop)
+get_prop(priv_app, boottime_prop)
+get_prop(priv_app, bpf_progs_loaded_prop)
+get_prop(priv_app, camera_prop)
 
 allow priv_app{
     debugfs_ion
     debugfs_mali_mem
 }:file r_file_perms;
 
-allow priv_app device:dir { open read };
+allow priv_app device:dir r_file_perms;
 allow priv_app sysfs_zram:dir search;
 allow priv_app sysfs_zram:file r_file_perms;
 
-allow priv_app apexd_prop:file open;
-allow priv_app proc_interrupts:file open;
+allow priv_app apexd_prop:file r_file_perms;
+allow priv_app bpf_progs_loaded_prop:file r_file_perms;
+allow priv_app proc_interrupts:file r_file_perms;
 r_dir_file(priv_app, sysfs_netcfg)
+#Should be other. /sys/class/net/wlan0/type
+r_dir_file(init, sysfs_type)
 
+dontaudit priv_app bluetooth_prop:file r_file_perms;
+dontaudit priv_app bootloader_boot_reason_prop:file r_file_perms;
 dontaudit priv_app sysfs_ausb:file r_file_perms;
-#dontaudit priv_app proc_interrupts:file r_file_perms;
+dontaudit priv_app zygote:file r_file_perms;

@@ -31,4 +31,6 @@ allow init sysfs_input:lnk_file read;
 
 allow init tmpfs:lnk_file create;
 
+r_dir_file(init, sysfs_type)
+
 allow init socket_device:sock_file create_file_perms;
