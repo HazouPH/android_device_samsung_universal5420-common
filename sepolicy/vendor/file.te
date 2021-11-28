@@ -41,6 +41,7 @@ type sysfs_gps, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_graphics, sysfs_type, fs_type, mlstrustedobject;
 type sysfs_homebutton_writable, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_interactive_writable, fs_type, sysfs_type, mlstrustedobject;
+type sysfs_sec_ir, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_jack, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_light, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_mdnie, fs_type, sysfs_type, mlstrustedobject;
