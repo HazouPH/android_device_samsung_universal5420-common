@@ -11,6 +11,7 @@ allow priv_app sysfs_zram:file r_file_perms;
 
 allow priv_app apexd_prop:file open;
 allow priv_app proc_interrupts:file open;
+r_dir_file(priv_app, sysfs_netcfg)
 
 dontaudit priv_app sysfs_ausb:file r_file_perms;
 #dontaudit priv_app proc_interrupts:file r_file_perms;

@@ -246,6 +246,7 @@
 
 # NET
 /sys/kernel/ipv4(/.*)?    u:object_r:sysfs_net:s0
+/sys/class/net(/.*)?		u:object_r:sysfs_netcfg:s0
 
 # Power
 /sys/power/autosleep       u:object_r:sysfs_power:s0

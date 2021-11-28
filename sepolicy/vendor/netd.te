@@ -2,4 +2,7 @@
 # Netd should not have SYS_MODULE privs, nor should it be requesting module loads
 # (things it requires should be built directly into the kernel)
 
+# Allow netd access for sysfs_netcfg
+r_dir_file(netd, sysfs_netcfg)
+
 dontaudit netd kernel:system module_request;
