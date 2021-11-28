@@ -38,7 +38,7 @@ using android::hardware::ir::V1_0::ConsumerIrFreqRange;
  * can override this header in your device tree
  */
 // Some devices need MS_IR_SIGNAL to avoid ms to pulses conversionn
-//#define MS_IR_SIGNAL
+#define MS_IR_SIGNAL
 
 static const std::vector<ConsumerIrFreqRange> consumerirFreqs = {
     {.min = 30000, .max = 30000},
