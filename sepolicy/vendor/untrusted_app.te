@@ -1,0 +1,6 @@
+# untrusted_app.te
+
+allow untrusted_app apexd_prop:file r_file_perms;
+#allow untrusted_app init:unix_stream_socket connectto;
+#allow untrusted_app log_tag_prop:property_service set;
+#allow untrusted_app property_socket:sock_file write;
