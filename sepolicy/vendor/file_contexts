@@ -210,6 +210,9 @@
 /sys/class/input(/.*)?    u:object_r:sysfs_input:s0
 /sys/devices/virtual/input(/.*)?    u:object_r:sysfs_input:s0
 
+# IR Blaster
+/sys/devices/virtual/sec/sec_ir(/.*)?                   u:object_r:sysfs_sec_ir:s0
+
 # LMK
 /sys/module/lowmemorykiller/parameters(/.*)?    u:object_r:sysfs_lowmemorykiller:s0
 
