@@ -174,14 +174,14 @@
 /sys/devices/platform/i2c-gpio\.[0-9]+/i2c-[0-9]+/[0-9]+-[0-9]+/power_supply/sec-fuelgauge(/.*)?    u:object_r:sysfs_batteryinfo:s0
 /sys/devices/platform/i2c-gpio\.[0-9]+/i2c-[0-9]+/[0-9]+-[0-9]+/[a-z0-9]+-muic/input/input1(/.*)?    u:object_r:sysfs_batteryinfo:s0
 
+# Block
+/sys/devices/platform/dw_mmc\.[0-9]+/mmc_host/mmc[0-9]+/mmc[0-9]+:[a-f0-9]+/block/mmcblk[0-9]+/queue(/.*)?	u:object_r:sysfs_io_sched_tuneable:s0
+
 # Bluetooth
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/state    u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/type     u:object_r:sysfs_bluetooth_writable:s0
 /sys/class/rfkill/rfkill0/state                                 u:object_r:sysfs_bluetooth_writable:s0
 /sys/class/rfkill/rfkill0/type                                  u:object_r:sysfs_bluetooth_writable:s0
-
-# Block/storage
-/sys/devices/platform/dw_mmc\.[0-9]+/mmc_host/mmc[0-9]+/mmc[0-9]+:[0-9]+/block/mmcblk[0-9]+/queue(/.*)?   u:object_r:sysfs_io_sched_tuneable:s0
 
 # Button
 /sys/devices/platform/i2c-gpio\.9/i2c-9/9-0060/input/input9(/.*)?        u:object_r:sysfs_homebutton_writable:s0
@@ -240,7 +240,7 @@
 /sys/devices/platform/exynos-sysmmu\.[0-9]+/s5p-mfc-v6/video4linux/video[0-9]+(/.*)?   u:object_r:sysfs_mfc:s0
 
 # MMC
-/sys/devices/platform/dw_mmc\.[0-9]+/mmc_host/mmc[0-9]+/mmc[0-9]+:[0-9]+/block/mmcblk[0-9]+/stat    u:object_r:sysfs_disk_stat:s0
+/sys/devices/platform/dw_mmc\.[0-9]+/mmc_host/mmc[0-9]+/mmc[0-9]+:[a-f0-9]+/block/mmcblk[0-9]+/stat    u:object_r:sysfs_disk_stat:s0
 
 # MMU
 /sys/devices/platform/exynos-sysmmu\.[0-9]+/exynos-sysmmu\.[0-9]+/exynos5-fb\.[0-9]+(/.*)?    u:object_r:sysfs_mmu:s0
