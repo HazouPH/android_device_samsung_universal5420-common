@@ -1,4 +1,4 @@
-# All unpinned blobs are from T700XXU1CTK1
+# All unpinned blobs are from T800OXA1CVG1
 # Vendor security patch level 2017-08-01
 
 # aptX - from marlin - OPM1.171019.011
