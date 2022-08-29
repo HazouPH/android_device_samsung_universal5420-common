@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
+#define  LOG_TAG    "libshim_camera"
+
 #include <stdlib.h> // avoid exit warning
 #include <stdio.h>
 #include <linux/ion.h>
 #include <dlfcn.h>
 #include <cutils/log.h>
-
-#define  LOG_TAG    "libshim_camera"
 
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
