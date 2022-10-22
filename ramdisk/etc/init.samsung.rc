@@ -298,9 +298,6 @@ on boot
    mkdir /efs/Battery 0775 radio system
    chown radio system /efs/Battery
    chmod 0775 /efs/Battery
-   copy /system/vendor/firmware/battery_data.dat /efs/Battery/battery_data.dat
-   chmod 0400 /efs/Battery/battery_data.dat
-   write /sys/class/power_supply/battery/batt_update_data "/efs/Battery/battery_data.dat"
    chown system radio /sys/class/power_supply/battery/batt_ext_dev_chg
    chown system radio /sys/class/power_supply/battery/batt_reset_soc
    chown system radio /sys/class/power_supply/battery/batt_slate_mode
@@ -454,9 +451,15 @@ on boot
     mkdir /dev/bus/usb 0755 root root
 
     write /sys/block/mmcblk0/queue/scheduler noop
-    write /sys/block/sda/queue/scheduler noop
 
-    copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
+on late-fs
+  # boot time fs tune
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/nr_requests 256
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk1/queue/nr_requests 256
+    write /sys/block/mmcblk1/queue/read_ahead_kb 2048
+
 
 on charger
     chmod 0664 /sys/class/power_supply/battery/batt_temp_table
@@ -470,9 +473,6 @@ on charger
     mkdir /efs/Battery 0775 radio system
     chown radio system /efs/Battery
     chmod 0775 /efs/Battery
-    copy /system/vendor/firmware/battery_data.dat /efs/Battery/battery_data.dat
-    chmod 0400 /efs/Battery/battery_data.dat
-    write /sys/class/power_supply/battery/batt_update_data "/efs/Battery/battery_data.dat"
     class_start charger
 
 ## Daemon processes to be run by init.
@@ -515,6 +515,8 @@ on property:init.svc.bootanim=stopped
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler bfq
+    write /sys/block/mmcblk0/queue/read_ahead_kb 256
+    write /sys/block/mmcblk1/queue/read_ahead_kb 256
 
 on property:apexd.status=ready
     mount none /system/vendor/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
