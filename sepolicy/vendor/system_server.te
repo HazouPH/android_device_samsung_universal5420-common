@@ -6,3 +6,4 @@ allow system_server sysfs_rndis:file w_file_perms;
 
 allow system_server self:process execmem;
 get_prop(system_server, vendor_radio_prop)
+allow system_server unlabeled:file unlink;

@@ -1,7 +1,8 @@
 # gpsd.te
 
 allow gpsd system_data_file:dir create_dir_perms;
-
+allow gpsd system_data_file:file create_file_perms;
+allow gpsd system_data_file:fifo_file { create open read setattr write };
 allow gpsd gps_data_file:dir create_dir_perms;
 allow gpsd gps_data_file:file create_file_perms;
 

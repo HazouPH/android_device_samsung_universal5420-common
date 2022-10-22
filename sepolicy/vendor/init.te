@@ -34,3 +34,4 @@ allow init tmpfs:lnk_file create;
 r_dir_file(init, sysfs_type)
 
 allow init socket_device:sock_file create_file_perms;
+allow init sysfs:file { open write };

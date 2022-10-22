@@ -24,3 +24,5 @@ allow hal_power_default {
 }:file rw_file_perms;
 
 allow hal_power_default sysfs_input:lnk_file read;
+allow hal_power_default sysfs:dir { open read };
+allow hal_power_default sysfs:file { getattr open read write };

@@ -2,6 +2,10 @@
 
 allow hal_camera_default debugfs_ion:dir search;
 
+allow hal_camera_default servicemanager:binder call;
+allow hal_camera_default sensorservice_service:service_manager find;
+allow hal_camera_default permission_service:service_manager find;
+allow hal_camera_default vndservicemanager:binder call;
 allow hal_camera_default vndbinder_device:chr_file rw_file_perms;
 
 allow hal_camera_default sysfs_camera:file r_file_perms;
@@ -12,5 +16,6 @@ allow hal_camera_default media_data_file:dir create_dir_perms;
 allow hal_camera_default media_data_file:file create_file_perms;
 
 allow hal_camera_default hal_graphics_mapper_hwservice:hwservice_manager find;
+allow hal_camera_default system_server:binder call;
 
 set_prop(hal_camera_default, camera_prop)

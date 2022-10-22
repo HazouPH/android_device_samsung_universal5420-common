@@ -1,3 +1,9 @@
 # shell.te
 
 allow shell bt_device:chr_file rw_file_perms;
+allow shell efs_file:dir getattr;
+allow shell init_exec:lnk_file getattr;
+allow shell rootfs:file getattr;
+allow shell unlabeled:dir getattr;
+allow shell kernel:system syslog_read;
+allow shell proc_last_kmsg:file getattr;

@@ -11,3 +11,5 @@ allow hal_lineage_touch_default {
     sysfs_sec_touchkey
     sysfs_sec_touchscreen
 }:file rw_file_perms;
+
+allow hal_lineage_touch_default sysfs:file { getattr open write };

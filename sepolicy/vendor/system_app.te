@@ -16,3 +16,10 @@ allow system_app sysfs_zram:dir search;
 allow system_app sysfs_zram:file r_file_perms;
 
 allow system_app vcsFPService:process signull;
+allow system_app apex_service:service_manager find;
+allow system_app netd:binder call;
+allow system_app system_suspend_control_service:service_manager find;
+allow system_app wificond:binder call;
+allow system_app apexd:binder call;
+allow system_app installd:binder call;
+allow system_app vold:binder call;

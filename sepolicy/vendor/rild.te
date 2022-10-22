@@ -1,12 +1,9 @@
 # rild.te
-
 allow rild radio_data_file:dir create_dir_perms;
 allow rild radio_data_file:file create_file_perms;
-
 allow rild alarm_device:chr_file r_file_perms;
-
 allow rild factorymode_factoryapp_efs_file:file r_file_perms;
-
 allow rild sysfs_multipdp_writable:file w_file_perms;
-
+allow rild system_data_file:lnk_file read;
+allow rild storage_file:dir search;
 set_prop(rild, net_radio_prop)
