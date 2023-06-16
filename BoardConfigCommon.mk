@@ -90,6 +90,9 @@ TARGET_KERNEL_SOURCE := kernel/samsung/exynos5420
 # Keymaster
 BOARD_USES_TRUST_KEYMASTER := true
 
+# Media
+TARGET_OMX_LEGACY_RESCALING := true
+
 # Memory
 MALLOC_SVELTE := true
 

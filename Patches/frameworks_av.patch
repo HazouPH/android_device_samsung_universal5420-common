@@ -1,0 +1,99 @@
+From b3145b99959f4fc24c5fc43bac022e56026e062b Mon Sep 17 00:00:00 2001
+From: zakooz <marcotribosklol@gmail.com>
+Date: Mon, 30 Jan 2017 00:25:38 +0000
+Subject: [PATCH] ACodec: Fix video autoscaling on old OMX decoders
+
+To enable: TARGET_OMX_LEGACY_RESCALING := true
+
+On Android N video autoscaling will cause the video to zoom in, being mostly outside of the frame of the video.
+This is because android no longer tries to match output ports before putting the new resolution in effect.
+Exynos OMX decoders send a message to get the new output crop, but it's lost along the way.
+Similarly to how Android M handles it, send the format change right before transitioning to ExecutingState.
+
+Change-Id: I19f974d37f9b11161efc7ee470301f444691fde6
+(cherry picked from commit a3daed9933fa1529bfe6e8b238a216e15d0140be)
+---
+ media/libstagefright/ACodec.cpp | 39 +++++++++++++++++++++++++++++++++
+ media/libstagefright/Android.bp |  5 +++++
+ 2 files changed, 44 insertions(+)
+
+diff --git a/media/libstagefright/ACodec.cpp b/media/libstagefright/ACodec.cpp
+index 0ecb8bdaaa..014dfa9b88 100644
+--- a/media/libstagefright/ACodec.cpp
++++ b/media/libstagefright/ACodec.cpp
+@@ -7896,6 +7896,27 @@ bool ACodec::OutputPortSettingsChangedState::onOMXFrameRendered(
+     return true;
+ }
+ 
++#ifdef USE_LEGACY_RESCALING
++void ACodec::addKeyFormatChangesToRenderBufferNotification(sp<AMessage> &notify) {
++    AString mime;
++    CHECK(mOutputFormat->findString("mime", &mime));
++
++    if (mime == MEDIA_MIMETYPE_VIDEO_RAW && mNativeWindow != NULL) {
++        // notify renderer of the crop change and dataspace change
++        // NOTE: native window uses extended right-bottom coordinate
++        int32_t left, top, right, bottom;
++        if (mOutputFormat->findRect("crop", &left, &top, &right, &bottom)) {
++            notify->setRect("crop", left, top, right + 1, bottom + 1);
++        }
++
++        int32_t dataSpace;
++        if (mOutputFormat->findInt32("android._dataspace", &dataSpace)) {
++            notify->setInt32("dataspace", dataSpace);
++        }
++    }
++}
++#endif
++
+ bool ACodec::OutputPortSettingsChangedState::onOMXEvent(
+         OMX_EVENTTYPE event, OMX_U32 data1, OMX_U32 data2) {
+     switch (event) {
+@@ -7942,6 +7963,15 @@ bool ACodec::OutputPortSettingsChangedState::onOMXEvent(
+                     return false;
+                 }
+ 
++#ifdef USE_LEGACY_RESCALING
++                // Resolution is about to change
++                // Make sure the decoder knows
++                sp<AMessage> reply = new AMessage(kWhatOutputBufferDrained, mCodec);
++                mCodec->onOutputFormatChanged();
++                mCodec->addKeyFormatChangesToRenderBufferNotification(reply);
++                mCodec->sendFormatChange();
++#endif
++
+                 ALOGV("[%s] Output port now reenabled.", mCodec->mComponentName.c_str());
+ 
+                 if (mCodec->mExecutingState->active()) {
+@@ -7956,6 +7986,15 @@ bool ACodec::OutputPortSettingsChangedState::onOMXEvent(
+             return false;
+         }
+ 
++#ifdef USE_LEGACY_RESCALING
++        case OMX_EventPortSettingsChanged:
++            // Exynos OMX wants to share its' output crop
++            // For some reason trying to handle this here doesn't do anything
++            // We'll do it right before transitioning to ExecutingState
++            return true;
++        break;
++#endif
++
+         default:
+             return BaseState::onOMXEvent(event, data1, data2);
+     }
+diff --git a/media/libstagefright/Android.bp b/media/libstagefright/Android.bp
+index 924d460845..d8f96fd30f 100644
+--- a/media/libstagefright/Android.bp
++++ b/media/libstagefright/Android.bp
+@@ -213,6 +213,11 @@ cc_library_shared {
+             // enable experiments only in userdebug and eng builds
+             cflags: ["-DENABLE_STAGEFRIGHT_EXPERIMENTS"],
+         },
++        lineage: {
++            target_omx_legacy_rescaling: {
++                cppflags: ["-DUSE_LEGACY_RESCALING"],
++            },
++        },
+     },
+ 
+     sanitize: {
