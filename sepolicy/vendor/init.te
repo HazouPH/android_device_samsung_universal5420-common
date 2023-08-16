@@ -16,7 +16,6 @@ allow init {
 
 allow init {
     bt_device
-    fingerprint_device
     ion_device
 }:chr_file rw_file_perms;
 

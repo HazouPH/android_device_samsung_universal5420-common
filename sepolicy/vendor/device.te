@@ -14,7 +14,6 @@ type tdata_block_device, dev_type;
 type tombstones_block_device, dev_type;
 
 # Fingerprint
-type fingerprint_device, dev_type;
 type vcs_device, dev_type;
 
 # GPS

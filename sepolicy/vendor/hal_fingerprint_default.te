@@ -2,4 +2,18 @@
 
 allow hal_fingerprint_default fingerprintd_data_file:dir w_file_perms;
 
-allow hal_fingerprint_default system_app:unix_stream_socket connectto;
+allow hal_fingerprint_default tee:unix_stream_socket connectto;
+allow hal_fingerprint_default vcs_data_file:dir create_dir_perms;
+allow hal_fingerprint_default vcs_data_file:file create_file_perms;
+
+allow hal_fingerprint_default vcs_device:dir create_dir_perms;
+allow hal_fingerprint_default vcs_device:file create_file_perms;
+allow hal_fingerprint_default vcs_device:fifo_file create_file_perms;
+allow hal_fingerprint_default vcs_device:chr_file create_file_perms;
+
+allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
+
+# /dev/s5p-smem
+allow hal_fingerprint_default secmem_device:chr_file { read write ioctl open };
+
+allow hal_fingerprint_default ion_device:chr_file { open read write ioctl };

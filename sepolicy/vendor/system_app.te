@@ -1,9 +1,5 @@
 # system_app.te
 
-allow system_app vcs_device:dir search;
-allow system_app vcs_device:file r_file_perms;
-allow system_app vcs_device:fifo_file rw_file_perms;
-
 allow system_app {
      sysfs_mdnie
      sysfs_graphics
@@ -15,7 +11,6 @@ allow system_app sysfs_mdnie:lnk_file rw_file_perms;
 allow system_app sysfs_zram:dir search;
 allow system_app sysfs_zram:file r_file_perms;
 
-allow system_app vcsFPService:process signull;
 allow system_app apex_service:service_manager find;
 allow system_app netd:binder call;
 allow system_app system_suspend_control_service:service_manager find;
