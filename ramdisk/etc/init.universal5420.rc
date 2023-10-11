@@ -307,10 +307,6 @@ on boot
     # Set max gpu clock at 533mhz
     write /sys/devices/platform/mali.0/max_clock 533
     
-    # Input Boosters
-    write /sys/class/sec/sec_touchkey/touchkey_booster_enabled 0
-    write /sys/class/sec/tsp/tsp_booster_enabled 0
-    
 on fs
     mount_all /vendor/etc/fstab.universal5420
     swapon_all /vendor/etc/fstab.universal5420
