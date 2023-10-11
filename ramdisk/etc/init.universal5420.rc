@@ -307,15 +307,6 @@ on boot
     # Set max gpu clock at 533mhz
     write /sys/devices/platform/mali.0/max_clock 533
     
-    # PowerBoard: Input and Charging Currents Tuning
-    write /sys/devices/platform/sec-battery/ac_input_curr 3000
-    write /sys/devices/platform/sec-battery/ac_chrg_curr 2550
-    write /sys/devices/platform/sec-battery/power_supply/battery/siop_level 99
-    write /sys/devices/platform/sec-battery/siop_input_limit 1300
-    write /sys/devices/platform/sec-battery/siop_charge_limit 1500
-    write /sys/devices/platform/sec-battery/sdp_input_curr 1000
-    write /sys/devices/platform/sec-battery/sdp_chrg_curr 1500
-    
     # Input Boosters
     write /sys/class/sec/sec_touchkey/touchkey_booster_enabled 0
     write /sys/class/sec/tsp/tsp_booster_enabled 0
