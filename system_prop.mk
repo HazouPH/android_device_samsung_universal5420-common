@@ -58,3 +58,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.direct.interface=p2p0
+
+ifeq ($(SHIM_SUPERCELL_SDK),true)
+PRODUCT_PROPERTY_OVERRIDES += \
+    wrap.com.supercell.boombeach=LD_PRELOAD=/system/lib/libshim_supercell.so \
+    wrap.com.supercell.clashofclans=LD_PRELOAD=/system/lib/libshim_supercell.so \
+    wrap.com.supercell.hayday=LD_PRELOAD=/system/lib/libshim_supercell.so \
+    wrap.com.supercell.brawlstars=LD_PRELOAD=/system/lib/libshim_supercell.so \
+    wrap.com.supercell.clashroyale=LD_PRELOAD=/system/lib/libshim_supercell.so
+endif

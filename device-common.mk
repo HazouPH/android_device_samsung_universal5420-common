@@ -197,6 +197,13 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     libgutils
 
+# Shims Supercell
+SHIM_SUPERCELL_SDK := true
+ifeq ($(SHIM_SUPERCELL_SDK),true)
+PRODUCT_PACKAGES += \
+    libshim_supercell
+endif
+
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
