@@ -23,7 +23,6 @@ allow init {
     sysfs_ausb
     sysfs_input
     sysfs_usb_power_writable
-    sysfs_zram
 }:file rw_file_perms;
 
 allow init sysfs_input:lnk_file read;
