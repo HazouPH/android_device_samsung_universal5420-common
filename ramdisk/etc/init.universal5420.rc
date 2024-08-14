@@ -46,12 +46,12 @@ on post-fs-data
     mkdir /efs/drm/playready 0775 drm system
 
     # create camera directory
-    mkdir /data/vendor/camera 0770 camera camera
+    mkdir /data/vendor/camera 0770 mediacodec camera
 
     # camera server uses files under this directory via a 
     # kernel module for the FIMC, trying chmod since chown 
     # not successful
-    chown cameraserver audio /data/misc/media
+    chown mediacodec audio /data/misc/media
     chmod 0776 /data/misc/media
 
 on boot

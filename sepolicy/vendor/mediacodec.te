@@ -4,3 +4,24 @@ allow mediacodec debugfs_ion:dir search;
 
 allow mediacodec sysfs_mfc:dir search;
 allow mediacodec sysfs_mfc:file r_file_perms;
+
+# Legacy camera HAL1
+add_service(mediacodec, cameraserver_service)
+add_hwservice(mediacodec, fwk_camera_hwservice)
+add_hwservice(mediacodec, hal_camera_hwservice)
+
+allow mediacodec { cameraproxy_service sensor_privacy_service permission_service sensorservice_service }:service_manager find;
+allow mediacodec property_socket:sock_file write;
+allow mediacodec vndbinder_device:chr_file rw_file_perms;
+allow mediacodec camera_device:chr_file rw_file_perms;
+allow mediacodec sysfs_camera:dir search;
+allow mediacodec sysfs_camera:file r_file_perms;
+allow mediacodec media_data_file:dir create_dir_perms;
+allow mediacodec media_data_file:file create_file_perms;
+allow mediacodec hal_graphics_mapper_hwservice:hwservice_manager find;
+allow mediacodec init:unix_stream_socket connectto;
+
+hal_client_domain(mediacodec, hal_lineage_camera_motor)
+
+#cam has to be in same process as mediacodec, because of old binary blobs
+hal_server_domain(mediacodec, hal_camera)

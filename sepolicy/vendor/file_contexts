@@ -188,6 +188,7 @@
 
 # Camera
 /sys/devices/virtual/camera/rear/rear_camtype    u:object_r:sysfs_camera:s0
+/sys/class/camera/rear/rear_camtype    u:object_r:sysfs_camera:s0
 
 # CPU/input boosters
 /sys/devices/system/cpu(/.*)?    u:object_r:sysfs_devices_system_cpu:s0
