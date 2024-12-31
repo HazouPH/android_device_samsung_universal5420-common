@@ -6,9 +6,9 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_MODULE := DeathlyAdiutor
 
-LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_CERTIFICATE := platform
 
-LOCAL_SRC_FILES := com.exynos5420.deathlyadiutor.ads.apk
+LOCAL_SRC_FILES := com.exynos5420.deathlyadiutor.ads_unsigned.apk
 
 LOCAL_MODULE_CLASS := APPS
 
